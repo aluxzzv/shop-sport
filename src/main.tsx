@@ -3,10 +3,27 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+const rootElement = document.getElementById('root')
+
+if (!rootElement) {
+  throw new Error('Root element not found')
+}
+
+try {
+  ReactDOM.createRoot(rootElement).render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+  )
+} catch (error) {
+  console.error('Error rendering app:', error)
+  rootElement.innerHTML = `
+    <div style="padding: 20px; font-family: Arial;">
+      <h1>Ошибка загрузки приложения</h1>
+      <p>${error instanceof Error ? error.message : 'Неизвестная ошибка'}</p>
+      <p>Проверьте консоль браузера (F12) для подробностей.</p>
+    </div>
+  `
+}
 
 

@@ -48,3 +48,4 @@ echo ""
 echo "✅ Готово! Проект загружен на GitHub"
 echo "🌐 Репозиторий: https://github.com/aluxzzv/shop-sport"
 
+
